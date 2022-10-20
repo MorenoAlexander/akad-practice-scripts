@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hostpath-volume-test
+spec:
+  restartPolicy: OnFailure
+  containers:
+  - name: busybox
+    image: busybox:stable
+    command: ['sh', '-c', 'cat /data/data.txt']
+    volumeMounts:
+      - mountPath: /data/data.txt
+        name: host-data
+  volumes:
+    - name: host-data
+      hostPath:
+        path: /etc/hosts
+        type: File
+
