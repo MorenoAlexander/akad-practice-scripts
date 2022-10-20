@@ -7,7 +7,7 @@ spec:
   containers:
   - name: busybox
     image: busybox:stable
-    command: ['sh', '-c', 'echo "Writing to the empty dir" > /data/data.txt; cat /data/data.txt']
+    command: ['sh', '-c', 'echo "$(uname -a)" > /data/data.txt; cat /data/data.txt']
     volumeMounts:
       - mountPath: /data/
         name: emptydir-volume
