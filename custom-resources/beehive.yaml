@@ -1,0 +1,30 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: beehives.bees.inc
+spec:
+  group: bees.inc
+  names:
+    plural: beehives
+    singular: beehive
+    kind: BeeHive
+    shortNames:
+    - bh
+    - hive
+  scope: Namespaced
+  versions: 
+  - name: v1
+    served: true
+    storage: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              supers:
+                type: integer
+              bees:
+                type: integer
+
